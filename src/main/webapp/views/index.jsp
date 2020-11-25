@@ -15,8 +15,8 @@
         <h1>Payments</h1>
     </header>
     <menu>
-        <a href="views/login.jsp">Login</a>
-        <a href="views/signUp.jsp">Sign up</a>
+        <a href="${pageContext.request.contextPath}/login">Login</a>
+        <a href="${pageContext.request.contextPath}/signUp">Sign up</a>
     </menu>
     <main>
         <p>The best payments' system in the world!</p>
