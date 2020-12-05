@@ -1,8 +1,8 @@
 package by.mvashkewi4.wt.entity;
 
 public enum Sex {
-    MAN(1),
-    WOMAN(2);
+    Man(1),
+    Woman(2);
 
     private final int id;
 

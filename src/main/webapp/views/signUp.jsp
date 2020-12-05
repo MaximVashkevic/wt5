@@ -4,7 +4,8 @@
   Date: 02.11.2020
   Time: 14:57
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Sign up</title>
@@ -15,7 +16,9 @@
         <h1>Sign Up</h1>
     </header>
     <main>
-        <form action="" method="post">
+        <c:set var="error" value='${requestScope["error"]}'/>
+        <p style="color:red;">${error}</p>
+        <form action="controller?command=signUp" method="post">
             <fieldset>
                 <p>
                     <label for="login">Login</label>
@@ -64,9 +67,9 @@
                     <input id="birth_date" name="birth_date" type="date">
                 <fieldset>
                     <legend>Sex</legend>
-                    <input id="man" name="sex" type="radio" value="man">
+                    <input id="man" name="sex" type="radio" value="Man">
                     <label for="man">Man</label>
-                    <input id="woman" name="sex" type="radio" value="woman">
+                    <input id="woman" name="sex" type="radio" value="Woman">
                     <label for="woman">Woman</label>
                 </fieldset>
                 <p>
@@ -123,7 +126,7 @@
                 </p>
                 <p>
                     <label for="street_type">Street type</label>
-                    <input id="street_type" name="street_type" type="text"
+                    <input id="street_type" name="street_type" type="text">
                 </p>
                 <p>
                     <label for="street_name">Street name</label>

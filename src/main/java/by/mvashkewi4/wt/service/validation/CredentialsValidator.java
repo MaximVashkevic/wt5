@@ -7,7 +7,7 @@ public class CredentialsValidator {
     private static Pattern lettersDigitsUnderscorePattern = Pattern.compile("^[a-zA-Z0-9_]*$");
 
     public static boolean isCorrect(String login, String password) {
-        return isLoginCorrect(login) && isPasswordCorrect(login);
+        return isLoginCorrect(login) && isPasswordCorrect(password);
     }
 
     private static boolean isLoginCorrect(String login) {

@@ -20,6 +20,22 @@ public class PassportData implements Serializable {
     private String nameEng;
     private String surnameEng;
 
+    public PassportData(String series, int number, String personalNumber, Date issueDate, Date validityDate, Date birthDate, Sex sex, String authority, String name, String surname, String middlename, String nameEng, String surnameEng) {
+        this.series = series;
+        this.number = number;
+        this.personalNumber = personalNumber;
+        this.issueDate = issueDate;
+        this.validityDate = validityDate;
+        this.birthDate = birthDate;
+        this.sex = sex;
+        this.authority = authority;
+        this.name = name;
+        this.surname = surname;
+        this.middlename = middlename;
+        this.nameEng = nameEng;
+        this.surnameEng = surnameEng;
+    }
+
     public int getId() {
         return id;
     }

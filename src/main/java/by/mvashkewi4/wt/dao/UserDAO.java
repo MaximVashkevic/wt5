@@ -8,5 +8,5 @@ import by.mvashkewi4.wt.entity.User;
 public interface UserDAO {
     User logIn(String login, String password) throws DAOException;
 
-    boolean register(User user, ClientData clientData, PassportData passportData, Address address) throws DAOException;
+    boolean signUp(User user, ClientData clientData, PassportData passportData, Address address) throws DAOException;
 }

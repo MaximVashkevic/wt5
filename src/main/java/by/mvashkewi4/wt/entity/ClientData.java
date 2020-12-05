@@ -11,6 +11,11 @@ public class ClientData implements Serializable {
     private String codeWord;
     private String email;
 
+    public ClientData(String codeWord, String email) {
+        this.codeWord = codeWord;
+        this.email = email;
+    }
+
     public int getId() {
         return id;
     }

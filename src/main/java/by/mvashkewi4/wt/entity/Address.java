@@ -18,6 +18,21 @@ public class Address implements Serializable {
     private String zipcode;
     private String phoneNumber;
 
+    public Address(String country, String region, String district, String settlementType, String settlementName, String streetType, String streetName, short house, Byte building, Integer flat, String zipcode, String phoneNumber) {
+        this.country = country;
+        this.region = region;
+        this.district = district;
+        this.settlementType = settlementType;
+        this.settlementName = settlementName;
+        this.streetType = streetType;
+        this.streetName = streetName;
+        this.house = house;
+        this.building = building;
+        this.flat = flat;
+        this.zipcode = zipcode;
+        this.phoneNumber = phoneNumber;
+    }
+
     public int getId() {
         return id;
     }

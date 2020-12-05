@@ -8,5 +8,5 @@ import by.mvashkewi4.wt.entity.User;
 public interface ClientService {
     User logIn(String login, String password) throws ServiceException;
 
-    boolean register(User user, ClientData clientData, PassportData passportData, Address address) throws ServiceException;
+    boolean signUp(User user, ClientData clientData, PassportData passportData, Address address) throws ServiceException;
 }

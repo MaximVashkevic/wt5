@@ -113,7 +113,6 @@ public class SQLUserDAO implements UserDAO {
             addClientDataStatement.setInt(2, clientData.getPassportId());
             addClientDataStatement.setInt(3, clientData.getAddressId());
             addClientDataStatement.setString(4, clientData.getCodeWord());
-            addClientDataStatement.setString(5, clientData.getEmail());
             int rowsAffected = addClientDataStatement.executeUpdate();
 
             if (rowsAffected != 0) {
@@ -154,7 +153,7 @@ public class SQLUserDAO implements UserDAO {
         try {
             loginStatement.setString(1, login);
             ResultSet result = loginStatement.executeQuery();
-            if (result.getString("password").equals(password)) {
+            if (result.next() && result.getString("password").equals(password)) {
                 return new User(
                         result.getInt("id"),
                         result.getString("login"),
@@ -169,7 +168,7 @@ public class SQLUserDAO implements UserDAO {
     }
 
     @Override
-    public boolean register(User user, ClientData clientData, PassportData passportData, Address address) throws DAOException {
+    public boolean signUp(User user, ClientData clientData, PassportData passportData, Address address) throws DAOException {
         try {
             connection.setAutoCommit(false);
 
