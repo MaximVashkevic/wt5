@@ -7,6 +7,8 @@ public class Role implements Serializable {
     private int id;
     private String role;
 
+    public final static int UserRoleId = 1;
+
     public int getId() {
         return id;
     }

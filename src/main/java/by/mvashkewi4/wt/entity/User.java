@@ -9,6 +9,17 @@ public class User implements Serializable {
     private String password;
     private int roleId;
 
+    public User(int id, String login, String password, int roleId) {
+        this(login, password, roleId);
+        this.id = id;
+    }
+
+    public User(String login, String password, int roleId) {
+        this.login = login;
+        this.password = password;
+        this.roleId = roleId;
+    }
+
     public int getId() {
         return id;
     }

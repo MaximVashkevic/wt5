@@ -188,22 +188,34 @@ CREATE TABLE IF NOT EXISTS `mydb`.`client_data` (
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   CONSTRAINT `passport_id`
     FOREIGN KEY (`passport_id`)
-    REFERENCES `mydb`.`passport_data` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+        REFERENCES `mydb`.`passport_data` (`id`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION,
   CONSTRAINT `address_id`
-    FOREIGN KEY (`address_id`)
-    REFERENCES `mydb`.`addresses` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+      FOREIGN KEY (`address_id`)
+          REFERENCES `mydb`.`addresses` (`id`)
+          ON DELETE NO ACTION
+          ON UPDATE NO ACTION,
   CONSTRAINT `client_id`
-    FOREIGN KEY (`client_id`)
-    REFERENCES `mydb`.`users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+      FOREIGN KEY (`client_id`)
+          REFERENCES `mydb`.`users` (`id`)
+          ON DELETE NO ACTION
+          ON UPDATE NO ACTION
+)
+    ENGINE = InnoDB;
 
 
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+SET SQL_MODE = @OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS = @OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `mydb`.`roles`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`roles` (`id`, `role`)
+VALUES (1, 'User');
+
+COMMIT;
+
