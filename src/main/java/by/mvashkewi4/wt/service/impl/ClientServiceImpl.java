@@ -2,7 +2,10 @@ package by.mvashkewi4.wt.service.impl;
 
 import by.mvashkewi4.wt.dao.DAOException;
 import by.mvashkewi4.wt.dao.DAOProvider;
-import by.mvashkewi4.wt.dao.UserDAO;
+import by.mvashkewi4.wt.dao.interfaces.AddressDAO;
+import by.mvashkewi4.wt.dao.interfaces.ClientDataDAO;
+import by.mvashkewi4.wt.dao.interfaces.PassportDataDAO;
+import by.mvashkewi4.wt.dao.interfaces.UserDAO;
 import by.mvashkewi4.wt.entity.Address;
 import by.mvashkewi4.wt.entity.ClientData;
 import by.mvashkewi4.wt.entity.PassportData;
@@ -12,6 +15,7 @@ import by.mvashkewi4.wt.service.ServiceException;
 import by.mvashkewi4.wt.service.validation.CredentialsValidator;
 
 public class ClientServiceImpl implements ClientService {
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ClientServiceImpl.class);
     @Override
     public User logIn(String login, String password) throws ServiceException {
         if (!CredentialsValidator.isCorrect(login, password)) {
@@ -26,6 +30,7 @@ public class ClientServiceImpl implements ClientService {
         try {
             user = userDAO.logIn(login, password);
         } catch (DAOException e) {
+            log.error("DAO exception", e);
             throw new ServiceException(e);
         }
 
@@ -39,11 +44,24 @@ public class ClientServiceImpl implements ClientService {
         }
 
         DAOProvider daoProvider = DAOProvider.getInstance();
+        PassportDataDAO passportDataDAO = daoProvider.getPassportDataDAO();
+        ClientDataDAO clientDataDAO = daoProvider.getClientDataDAO();
+        AddressDAO addressDAO = daoProvider.getAddressDAO();
         UserDAO userDAO = daoProvider.getUserDAO();
 
         try {
-            return userDAO.signUp(user, clientData, passportData, address);
+            int passportDataId = passportDataDAO.add(passportData);
+            int addressId = addressDAO.add(address);
+            int userId = userDAO.add(user);
+
+            clientData.setAddressId(addressId);
+            clientData.setPassportId(passportDataId);
+            clientData.setClientId(userId);
+
+            clientDataDAO.add(clientData);
+            return true;
         } catch (DAOException e) {
+            log.error("DAO exception", e);
             throw new ServiceException(e);
         }
     }
