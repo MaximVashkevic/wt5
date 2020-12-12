@@ -13,6 +13,16 @@ public class Card implements Serializable {
     private String pinHash;
     private String cvvHash;
 
+    public Card(int id, int accountId, String numberHash, Date expirationDate, short lastDigits, String pinHash, String cvvHash) {
+        this.id = id;
+        this.accountId = accountId;
+        this.numberHash = numberHash;
+        this.expirationDate = expirationDate;
+        this.lastDigits = lastDigits;
+        this.pinHash = pinHash;
+        this.cvvHash = cvvHash;
+    }
+
     public int getId() {
         return id;
     }

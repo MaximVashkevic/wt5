@@ -44,6 +44,7 @@ public class SQLAddressDAO implements AddressDAO {
                     }
                 }
             }
+            addAddressStatement.close();
         } catch (SQLException | ConnectionProviderException e) {
             throw new DAOException(e);
         }

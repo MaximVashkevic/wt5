@@ -34,6 +34,7 @@ public class SQLClientDataDAO implements ClientDataDAO {
                     }
                 }
             }
+            addClientDataStatement.close();
         } catch (SQLException | ConnectionProviderException e) {
             throw new DAOException(e);
         }

@@ -9,6 +9,12 @@ public class Transaction implements Serializable {
     private int cardId;
     private BigDecimal amount;
 
+    public Transaction(int id, int cardId, BigDecimal amount) {
+        this.id = id;
+        this.cardId = cardId;
+        this.amount = amount;
+    }
+
     public int getId() {
         return id;
     }

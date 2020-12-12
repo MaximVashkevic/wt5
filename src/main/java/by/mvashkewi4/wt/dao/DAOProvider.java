@@ -1,14 +1,8 @@
 package by.mvashkewi4.wt.dao;
 
 import by.mvashkewi4.wt.dao.connection.ConnectionProvider;
-import by.mvashkewi4.wt.dao.impl.SQLAddressDAO;
-import by.mvashkewi4.wt.dao.impl.SQLClientDataDAO;
-import by.mvashkewi4.wt.dao.impl.SQLPassportDataDAO;
-import by.mvashkewi4.wt.dao.impl.SQLUserDAO;
-import by.mvashkewi4.wt.dao.interfaces.AddressDAO;
-import by.mvashkewi4.wt.dao.interfaces.ClientDataDAO;
-import by.mvashkewi4.wt.dao.interfaces.PassportDataDAO;
-import by.mvashkewi4.wt.dao.interfaces.UserDAO;
+import by.mvashkewi4.wt.dao.impl.*;
+import by.mvashkewi4.wt.dao.interfaces.*;
 
 public class DAOProvider {
     private static DAOProvider instance;
@@ -17,12 +11,14 @@ public class DAOProvider {
     private final PassportDataDAO passportDataDAO;
     private final AddressDAO addressDAO;
     private final ClientDataDAO clientDataDAO;
+    private final AccountDAO accountDAO;
 
     private DAOProvider() {
         userDAO = new SQLUserDAO(connectionProvider);
         passportDataDAO = new SQLPassportDataDAO(connectionProvider);
         addressDAO = new SQLAddressDAO(connectionProvider);
         clientDataDAO = new SQLClientDataDAO(connectionProvider);
+        accountDAO = new SQLAccountDAO(connectionProvider);
     }
 
     public static void init(ConnectionProvider connectionProvider) {
@@ -48,5 +44,9 @@ public class DAOProvider {
 
     public ClientDataDAO getClientDataDAO() {
         return clientDataDAO;
+    }
+
+    public AccountDAO getAccountDAO() {
+        return accountDAO;
     }
 }

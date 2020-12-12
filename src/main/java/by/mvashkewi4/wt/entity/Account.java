@@ -12,6 +12,15 @@ public class Account implements Serializable {
     private Boolean isLocked;
     private BigDecimal amount;
 
+    public Account(int id, int userId, int currencyId, String accountNumber, Boolean isLocked, BigDecimal amount) {
+        this.id = id;
+        this.userId = userId;
+        this.currencyId = currencyId;
+        this.accountNumber = accountNumber;
+        this.isLocked = isLocked;
+        this.amount = amount;
+    }
+
     public int getId() {
         return id;
     }

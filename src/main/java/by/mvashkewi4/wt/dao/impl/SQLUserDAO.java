@@ -31,6 +31,7 @@ public class SQLUserDAO implements UserDAO {
                         "",
                         result.getInt("role_id"));
             }
+            loginStatement.close();
         } catch (SQLException | ConnectionProviderException e) {
             throw new DAOException(e);
         }
@@ -53,6 +54,7 @@ public class SQLUserDAO implements UserDAO {
                     }
                 }
             }
+            addUserStatement.close();
         } catch (SQLException | ConnectionProviderException e) {
             throw new DAOException(e);
         }

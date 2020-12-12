@@ -43,6 +43,7 @@ public class SQLPassportDataDAO implements PassportDataDAO {
                     }
                 }
             }
+            addPassportDataStatement.close();
         } catch (SQLException e) {
             throw new DAOException(e);
         }
