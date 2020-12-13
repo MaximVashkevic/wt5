@@ -15,6 +15,11 @@ public class Transaction implements Serializable {
         this.amount = amount;
     }
 
+    public Transaction(int cardId, BigDecimal amount) {
+        this.cardId = cardId;
+        this.amount = amount;
+    }
+
     public int getId() {
         return id;
     }

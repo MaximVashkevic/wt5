@@ -12,6 +12,8 @@ public class DAOProvider {
     private final AddressDAO addressDAO;
     private final ClientDataDAO clientDataDAO;
     private final AccountDAO accountDAO;
+    private final CardDAO cardDAO;
+    private final TransactionDAO transactionDAO;
 
     private DAOProvider() {
         userDAO = new SQLUserDAO(connectionProvider);
@@ -19,6 +21,8 @@ public class DAOProvider {
         addressDAO = new SQLAddressDAO(connectionProvider);
         clientDataDAO = new SQLClientDataDAO(connectionProvider);
         accountDAO = new SQLAccountDAO(connectionProvider);
+        cardDAO = new SQLCardDAO(connectionProvider);
+        transactionDAO = new SQLTransactionDAO(connectionProvider);
     }
 
     public static void init(ConnectionProvider connectionProvider) {
@@ -48,5 +52,13 @@ public class DAOProvider {
 
     public AccountDAO getAccountDAO() {
         return accountDAO;
+    }
+
+    public CardDAO getCardDAO() {
+        return cardDAO;
+    }
+
+    public TransactionDAO getTransactionDAO() {
+        return transactionDAO;
     }
 }

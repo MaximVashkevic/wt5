@@ -43,7 +43,6 @@ public class LogInCommand implements Command {
                 page = DEFAULT_PAGE;
             }
         } catch (ServiceException e) {
-            e.printStackTrace();
             request.setAttribute("error", "login or password error");
             page = DEFAULT_PAGE;
         }

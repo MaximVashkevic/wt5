@@ -58,6 +58,24 @@
         <url-pattern>/signUp</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>accounts</servlet-name>
+        <jsp-file>/views/accounts.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>accounts</servlet-name>
+        <url-pattern>/accounts</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>addAccount</servlet-name>
+        <jsp-file>/views/addAccount.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addAccount</servlet-name>
+        <url-pattern>/addAccount</url-pattern>
+    </servlet-mapping>
+
     <listener>
         <listener-class>by.mvashkewi4.wt.dao.DAOContextListener</listener-class>
     </listener>

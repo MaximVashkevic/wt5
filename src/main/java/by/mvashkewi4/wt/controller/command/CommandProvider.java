@@ -15,6 +15,9 @@ public class CommandProvider {
         commands.put("go_login", new GoToLogInCommand());
         commands.put("go_signUp", new GoToSignUpCommand());
         commands.put("go_index", new GoToIndexCommand());
+        commands.put("go_accounts", new GoToAccountsCommand());
+        commands.put("go_addAccount", new GoToAddAccountCommand());
+        commands.put("addAccount", new AddAccountCommand());
     }
 
     public Command getCommand(String commandName) {

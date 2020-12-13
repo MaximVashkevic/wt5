@@ -101,7 +101,6 @@ public class SignUpCommand implements Command {
                 request.setAttribute("login", user.getLogin());
                 page = AUTH_PAGE;
             } catch (ServiceException e) {
-                e.printStackTrace();
                 request.setAttribute("error", "Error. Try again!");
                 page = REGISTRATION_PAGE;
             }

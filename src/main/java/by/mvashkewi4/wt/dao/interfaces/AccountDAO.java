@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public interface AccountDAO {
+    Account getAccount(int accountID) throws DAOException;
+
     List<Account> getUserAccounts(int userId) throws DAOException;
 
     void changeAmount(Account account, BigDecimal newAmount) throws DAOException;

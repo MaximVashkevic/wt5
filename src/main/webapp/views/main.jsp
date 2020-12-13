@@ -19,9 +19,12 @@
         <a href="controller?command=logout">Log out</a>
     </menu>
     <main>
+        <c:set var="error" value='${requestScope["error"]}'/>
+        <p style="color:red;">${error}</p>
         <p>The best payments' system in the world!</p>
         <c:set var="user" value='${applicationScope["user"]}'/>
         <p>Welcome, ${user.getLogin()}!</p>
+        <a href="controller?command=go_accounts">Accounts</a>
     </main>
 </div>
 </body>

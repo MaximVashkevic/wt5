@@ -21,6 +21,10 @@ public class Account implements Serializable {
         this.amount = amount;
     }
 
+    public Account(int userId, int currencyId, String accountNumber) {
+        this(0, userId, currencyId, accountNumber, false, new BigDecimal(0));
+    }
+
     public int getId() {
         return id;
     }

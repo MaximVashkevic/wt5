@@ -19,6 +19,7 @@ public class SQLAccountDAO implements AccountDAO {
             "INSERT INTO `accounts` (`user_id`, `currency_id`, `account_number`, `is_locked`, `amount`) " +
                     "VALUES (?, ?, ?, ?, ?);";
     private static final String GET_ACCOUNTS_BY_USER_ID_QUERY = "SELECT * FROM `accounts` WHERE `user_id` = ?;";
+    private static final String GET_ACCOUNT_BY_ACCOUNT_ID_QUERY = "SELECT * FROM `accounts` WHERE `account_id` = ?;";
     private static final String CHANGE_AMOUNT_QUERY = "UPDATE `accounts` SET `amount` = ? WHERE `id` = ?;";
     private static final String LOCK_ACCOUNT_QUERY = "UPDATE `accounts` SET `is_locked` = true WHERE `id` = ?;";
     private static final String DB_COLUMN_ID = "id";
@@ -31,6 +32,33 @@ public class SQLAccountDAO implements AccountDAO {
 
     public SQLAccountDAO(ConnectionProvider connectionProvider) {
         this.connectionProvider = connectionProvider;
+    }
+
+    @Override
+    public Account getAccount(int accountId) throws DAOException {
+        try (Connection connection = connectionProvider.getConnection()) {
+            PreparedStatement getAccountsStatemen = connection.prepareStatement(GET_ACCOUNTS_BY_USER_ID_QUERY);
+            getAccountsStatemen.setInt(1, accountId);
+            ResultSet resultSet = getAccountsStatemen.executeQuery();
+            Account result = null;
+            if (resultSet != null && resultSet.next()) {
+                result = new Account(
+                        resultSet.getInt(DB_COLUMN_ID),
+                        resultSet.getInt(DB_COLUMN_USER_ID),
+                        resultSet.getInt(DB_COLUMN_CURRENCY_ID),
+                        resultSet.getString(DB_COLUMN_ACCOUNT_NUMBER),
+                        resultSet.getBoolean(DB_COLUMN_IS_LOCKED),
+                        resultSet.getBigDecimal(DB_COLUMN_AMOUNT)
+                );
+                resultSet.close();
+            }
+            getAccountsStatemen.close();
+
+            return result;
+
+        } catch (SQLException | ConnectionProviderException e) {
+            throw new DAOException(e);
+        }
     }
 
     @Override
